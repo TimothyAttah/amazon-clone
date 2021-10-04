@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { Header } from './components/header/Header'
 
 export const App = () => {
   return (
     <div>
-      <h1>hello world :rock</h1>
+      <Header />
     </div>
   )
 }
