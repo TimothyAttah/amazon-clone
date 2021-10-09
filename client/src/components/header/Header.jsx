@@ -1,14 +1,16 @@
 import React from 'react';
 import {Search, ShoppingBasket} from '@material-ui/icons'
-import './Header.css';
 import { Link } from 'react-router-dom';
+import { images } from '../images';
+import './Header.css';
 
 export const Header = () => {
   return (
 		<div className='header'>
 			<Link to='/'>
 				<img
-					src='http://pngimg.com/uploads/amazon/amazon_PNG11.png'
+					src={images.Logo}
+					// src='http://pngimg.com/uploads/amazon/amazon_PNG11.png'
 					alt=''
 					className='header__logo'
 				/>

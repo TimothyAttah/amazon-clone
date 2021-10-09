@@ -1,5 +1,6 @@
 import React from 'react';
 import { Subtotal } from '../subtotal/Subtotal';
+import { images } from '../images';
 import './Checkout.css';
 
 export const Checkout = () => {
@@ -7,7 +8,8 @@ export const Checkout = () => {
 		<div className='checkout'>
 			<div className='checkout__left'>
 				<img
-					src='https://images-na.ssl-images-amazon.com/images/G/02/UK_CCMP/TM/OCC_Amazon1._CB42349668_.jpg'
+					src={images.BackgroundImg2}
+					// src='https://images-na.ssl-images-amazon.com/images/G/02/UK_CCMP/TM/OCC_Amazon1._CB42349668_.jpg'
 					alt=''
 					className='checkout__ad'
 				/>
