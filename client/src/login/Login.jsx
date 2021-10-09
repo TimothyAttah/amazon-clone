@@ -1,16 +1,41 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { images } from '../components/images';
+import { useStateValue } from '../contextAPI/StateProvider';
+// import { auth } from '../firebase';
 import './Login.css';
 
 export const Login = () => {
+  const [ dispatch ] = useStateValue();
+  const history = useHistory();
   const [ email, setEmail ] = useState( '' );
   const [ password, setPassword ] = useState( '' );
   const signIn = ( e ) => {
-    e.preventDefault();
-  }
+		e.preventDefault();
+		// auth.createUserWithEmailAndPassword( email, password )
+		//   .then( ( auth ) => {
+    // history.push('/')
+	// })
+		// .catch(error => alert(error.message))
+	}
+
   const register = ( e ) => {
     e.preventDefault();
+    // auth.createUserWithEmailAndPassword( email, password )
+    //   .then( ( auth ) => {
+    //   console.log(auth);
+    // if(auth){
+    //  history.push('/')
+    //   } )
+    // .catch(error => alert(error.message))
+    dispatch( {
+      type: 'SIGN_IN',
+      item:{
+      email,
+        password
+      }
+    } )
+  history.push( '/' );
   }
   return (
     <div className="login">
