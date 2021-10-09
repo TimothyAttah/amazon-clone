@@ -8,7 +8,7 @@ import { Login } from './login/Login';
 import { useStateValue } from './contextAPI/StateProvider';
 
 export const App = () => {
-	const [{ user, basket }, dispatch] = useStateValue();
+	const [{ user }, dispatch] = useStateValue();
 	useEffect(() => {
 		// auth.onAuthSateChanged( authUser => {
 		// 	console.log( authUser );
@@ -34,7 +34,7 @@ export const App = () => {
 		} else {
 			console.log('this is user login >>>');
 		}
-	}, [user]);
+	}, [user, dispatch]);
 	return (
 		<Router>
 			<div className='app'>
