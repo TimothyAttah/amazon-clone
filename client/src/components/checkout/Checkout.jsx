@@ -2,11 +2,12 @@ import React from 'react';
 import { Subtotal } from '../subtotal/Subtotal';
 import { images } from '../images';
 import './Checkout.css';
-// import { useStateValue } from '../../contextAPI/StateProvider';
+import { CheckoutProduct } from './CheckoutProduct';
+import { useStateValue } from '../../contextAPI/StateProvider';
 
 export const Checkout = () => {
 
-	// const [ { basket } ] = useStateValue();	
+	const [ { basket } ] = useStateValue();	
 	// REDUCE FUNCTION INSIDE THE SUBTOTAL
 	// const price = basket.map( item => item.price )
 	// const priceVal = price?.reduce( ( val, res ) => val += res, 0 );
@@ -24,6 +25,16 @@ export const Checkout = () => {
 				<div>
 					<h2 className='checkout__title'>Your shopping Basket</h2>
 				</div>
+				{ basket.map( item => (
+					<CheckoutProduct
+						key={ item.id }
+						id={ item.id }
+						title={ item.title }
+						image={ item.image }
+						price={ item.price }
+						rating={ item.rating }
+					/>
+				 ))}
 			</div>
 			<div className='checkout__right'>
 				<Subtotal />
