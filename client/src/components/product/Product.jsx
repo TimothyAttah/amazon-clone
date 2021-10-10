@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-pattern */
 import { Star } from '@material-ui/icons';
 import React from 'react';
 import { useStateValue } from '../../contextAPI/StateProvider';

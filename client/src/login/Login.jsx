@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-pattern */
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { images } from '../components/images';
