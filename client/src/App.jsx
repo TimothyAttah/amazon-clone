@@ -6,6 +6,7 @@ import { Home } from './home/Home';
 import { Login } from './login/Login';
 // import { auth } from './firebase';
 import { useStateValue } from './contextAPI/StateProvider';
+import { Payment } from './components/payment/Payment';
 
 export const App = () => {
 	const [{ user }, dispatch] = useStateValue();
@@ -41,6 +42,10 @@ export const App = () => {
 				<Switch>
 					<Route path='/login'>
 						<Login />
+					</Route>
+					<Route path='/payment'>
+						<Header />
+						<Payment />
 					</Route>
 					<Route path='/checkout'>
 						<Header />
