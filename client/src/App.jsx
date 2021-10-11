@@ -7,6 +7,7 @@ import { Login } from './login/Login';
 // import { auth } from './firebase';
 import { useStateValue } from './contextAPI/StateProvider';
 import { Payment } from './components/payment/Payment';
+import { Orders } from './components/orders/Orders';
 
 
 /* --- DOWNLOAD THIS WHEN ONLINE START ----*/
@@ -56,6 +57,10 @@ export const App = () => {
 				<Switch>
 					<Route path='/login'>
 						<Login />
+					</Route>
+					<Route path='/orders'>
+						<Header />
+						<Orders />
 					</Route>
 					<Route path='/payment'>
 						<Header />
