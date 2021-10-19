@@ -1,10 +1,11 @@
+/* eslint-disable no-empty-pattern */
 import { Star } from '@material-ui/icons';
 import React from 'react';
 import { useStateValue } from '../../contextAPI/StateProvider';
 import './Checkout.css';
 
 export const CheckoutProduct = ( { id, image, title, price, rating } ) => {
-  const [ dispatch ] = useStateValue();	
+  const [{}, dispatch ] = useStateValue();	
   const removeFromBasket = () => {
     dispatch( {
       type: 'REMOVE_FROM_BASKET',

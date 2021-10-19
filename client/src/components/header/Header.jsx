@@ -1,12 +1,23 @@
 import React from 'react';
-import {Search, ShoppingBasket} from '@material-ui/icons'
 import { Link } from 'react-router-dom';
+import {Search, ShoppingBasket} from '@material-ui/icons'
 import { images } from '../images';
 import './Header.css';
 import { useStateValue } from '../../contextAPI/StateProvider';
+// import { auth } from '../../firebase'; USE WHEN ONLINE
 
 export const Header = () => {
-	 const [{ basket }] = useStateValue();
+	const [ { basket, user }, dispatch ] = useStateValue();
+
+	const handleAuthentication = () => {
+		if ( user ) {
+			// auth.signOut() USE THIS WHEN ONLINE
+			dispatch( {
+				type: 'SIGN_OUT',
+				user: ''
+			})
+		}
+	}
   return (
 		<div className='header'>
 			<Link to='/'>
@@ -22,10 +33,12 @@ export const Header = () => {
 				<Search className='header__searchIcon' />
 			</div>
 			<div className='header__nav'>
-				<div className='header__option'>
-					<span className='header__optionLineOne'>Hello Guest</span>
-					<span className='header__optionLineTwo'>Sign In</span>
+				<Link to={!user && '/login'}>
+				<div onClick={handleAuthentication} className='header__option'>
+					<span className='header__optionLineOne'>Hello {user ? user[0]?.email : 'Guest'}</span>
+					<span className='header__optionLineTwo'>{user ? 'Sign Out' : 'Sign In'}</span>
 				</div>
+				</Link>
 				<div className='header__option'>
 					<span className='header__optionLineOne'>Returns</span>
 					<span className='header__optionLineTwo'>& orders</span>

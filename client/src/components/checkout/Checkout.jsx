@@ -7,12 +7,13 @@ import { useStateValue } from '../../contextAPI/StateProvider';
 
 export const Checkout = () => {
 
-	const [ { basket } ] = useStateValue();	
+	const [ { basket, user } ] = useStateValue();	
 	// REDUCE FUNCTION INSIDE THE SUBTOTAL
 	// const price = basket.map( item => item.price )
 	// const priceVal = price?.reduce( ( val, res ) => val += res, 0 );
 	// const totalPrice = priceVal
 	// console.log('total', totalPrice);
+	console.log(user);
   return (
 		<div className='checkout'>
 			<div className='checkout__left'>
@@ -23,6 +24,8 @@ export const Checkout = () => {
 					className='checkout__ad'
 				/>
 				<div>
+					<h3>Hello, { user[0]?.email }</h3>
+					{/* <h3>{ user?.email }</h3> THIS IS THE REAL ONE WITH FIREBASE */}
 					<h2 className='checkout__title'>Your shopping Basket</h2>
 				</div>
 				{ basket.map( item => (

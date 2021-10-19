@@ -1,12 +1,12 @@
+/* eslint-disable no-empty-pattern */
 import { Star } from '@material-ui/icons';
 import React from 'react';
 import { useStateValue } from '../../contextAPI/StateProvider';
 import './Product.css';
 
 export const Product = ( { id, title, image, price, rating } ) => {
-  const [ { basket }, dispatch ] = useStateValue()
+  const [{}, dispatch ] = useStateValue()
   
-  console.log('this is the basket >>>', basket);
   const addToBasket = () => {
     dispatch( {
       type: "ADD_TO_BASKET",
