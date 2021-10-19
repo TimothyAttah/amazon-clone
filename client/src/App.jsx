@@ -10,17 +10,12 @@ import { Payment } from './components/payment/Payment';
 import { Orders } from './components/orders/Orders';
 
 
-/* --- DOWNLOAD THIS WHEN ONLINE START ----*/
-// import {loadStripe} from '@stripe/stripe-js'
-// import { Elements } from '@stripe/react-stripe-js'
+import {loadStripe} from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
 
-// const promise = loadStripe(
-// 	"pk_test_51hp" 
-// )// MAKE SURE YOU GET THE STRIPE PUBLIC KEY WHEN ONLINE
-
-/* --- DOWNLOAD THIS WHEN ONLINE END ----*/ 
-
-
+const promise = loadStripe(
+	'pk_test_51JmHqYKAh2TuRMk11ZFyPMn2IkkRMEHVAu7UVTh2f6TOYIKNAbhXow7byjQLi813EdDYXPtkQuJ2l3oej1J3xkgx00CiifpDQb'
+);
 
 
 export const App = () => {
@@ -65,10 +60,9 @@ export const App = () => {
 					</Route>
 					<Route path='/payment'>
 						<Header />
-						{/* <Elements stripe={promise}>
+						<Elements stripe={promise}>
 							<Payment />
-						</Elements> USE THIS WITH STRIPE */}
-						<Payment />
+						</Elements>
 					</Route>
 					<Route path='/checkout'>
 						<Header />

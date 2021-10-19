@@ -4,7 +4,7 @@ import CurrencyFormat from 'react-currency-format';
 import { useStateValue } from '../../contextAPI/StateProvider';
 import { CheckoutProduct } from '../checkout/CheckoutProduct';
 import './Payment.css';
-// import { db } from '../../firebase';
+import { db } from '../../firebase';
 
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { getBasketTotal } from '../../contextAPI/reducer';
@@ -77,7 +77,7 @@ export const Payment = () => {
 						<h3>Delivery Address</h3>
 					</div>
 					<div className='payment__address'>
-						<p>{user[0]?.email}</p>
+						<p>{user?.email}</p>
 						<p>123 React Amazon Clone</p>
 						<p>Los Angeles, CA</p>
 					</div>
