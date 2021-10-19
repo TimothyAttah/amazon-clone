@@ -4,6 +4,7 @@ const cors = require( 'cors' );
 const stripe = require('stripe')(
 	'sk_test_51JmHqYKAh2TuRMk1qYAUAuB0apE7yWurrO16mfrQ06ed90CLcSSbg3fcDraekyYzFVywTMDZWLgfZSeYlcf2mZj500NVRqnaDa'
 );
+stripe.api_key=""
 
 
 // API 
@@ -12,7 +13,7 @@ const stripe = require('stripe')(
 const app = express();
 
 // MIDDLEWARES
-app.use( cors({origin:true}) );
+app.use( cors() );
 app.use( express.json() );
 
 // API ROUTES
