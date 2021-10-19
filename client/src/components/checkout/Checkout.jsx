@@ -24,8 +24,7 @@ export const Checkout = () => {
 					className='checkout__ad'
 				/>
 				<div>
-					<h3>Hello, { user[0]?.email }</h3>
-					{/* <h3>{ user?.email }</h3> THIS IS THE REAL ONE WITH FIREBASE */}
+					<h3>Hello, { user?.email }</h3>
 					<h2 className='checkout__title'>Your shopping Basket</h2>
 				</div>
 				{ basket.map( item => (
