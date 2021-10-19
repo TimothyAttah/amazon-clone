@@ -1,6 +1,9 @@
 export const initialState = {
   basket: [],
-  user: []
+  user: [ {
+    email: 'test@gmail.com',
+    password: '23456'
+  }]
 };
 
 

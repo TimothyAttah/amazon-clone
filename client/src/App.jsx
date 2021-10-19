@@ -6,6 +6,21 @@ import { Home } from './home/Home';
 import { Login } from './login/Login';
 // import { auth } from './firebase';
 import { useStateValue } from './contextAPI/StateProvider';
+import { Payment } from './components/payment/Payment';
+
+
+/* --- DOWNLOAD THIS WHEN ONLINE START ----*/
+// import {loadStripe} from '@stripe/stripe-js'
+// import { Elements } from '@stripe/react-stripe-js'
+
+// const promise = loadStripe(
+// 	"pk_test_51hp" 
+// )// MAKE SURE YOU GET THE STRIPE PUBLIC KEY WHEN ONLINE
+
+/* --- DOWNLOAD THIS WHEN ONLINE END ----*/ 
+
+
+
 
 export const App = () => {
 	const [{ user }, dispatch] = useStateValue();
@@ -41,6 +56,13 @@ export const App = () => {
 				<Switch>
 					<Route path='/login'>
 						<Login />
+					</Route>
+					<Route path='/payment'>
+						<Header />
+						{/* <Elements stripe={promise}>
+							<Payment />
+						</Elements> USE THIS WITH STRIPE */}
+						<Payment />
 					</Route>
 					<Route path='/checkout'>
 						<Header />
