@@ -4,7 +4,7 @@ import { Checkout } from './components/checkout/Checkout';
 import { Header } from './components/header/Header';
 import { Home } from './home/Home';
 import { Login } from './login/Login';
-// import { auth } from './firebase';
+import { auth } from './firebase';
 import { useStateValue } from './contextAPI/StateProvider';
 import { Payment } from './components/payment/Payment';
 import { Orders } from './components/orders/Orders';
@@ -25,21 +25,22 @@ import { Orders } from './components/orders/Orders';
 
 export const App = () => {
 	const [{ user }, dispatch] = useStateValue();
-	useEffect(() => {
-		// auth.onAuthSateChanged( authUser => {
-		// 	console.log( authUser );
-		// 	if ( authUser ) {
-		// dispatch( {
-		// 	type: "SET_USER",
-		// 	user: authUser
-		// })
-		// 	}else{
-		//  dispatch( {
-		// 	type: "SET_USER",
-		// 	user: null
-		// })
-		// }
-		// })
+	useEffect( () => {
+		
+		auth.onAuthStateChanged( authUser => {
+			console.log('This is USER', authUser );
+			if ( authUser ) {
+		dispatch( {
+			type: "SET_USER",
+			user: authUser
+		})
+			}else{
+		 dispatch( {
+			type: "SET_USER",
+			user: null
+		})
+		}
+		})
 
 		if (user) {
 			console.log('this is user login >>>', user);
