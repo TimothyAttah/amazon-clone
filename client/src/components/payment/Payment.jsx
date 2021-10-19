@@ -8,7 +8,7 @@ import { db } from '../../firebase';
 
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { getBasketTotal } from '../../contextAPI/reducer';
-import {instance} from '../../axios';
+import axios from '../../axios';
 
 export const Payment = () => {
   const history = useHistory();
@@ -24,14 +24,16 @@ export const Payment = () => {
   
   useEffect( () => {
     const getClientSecret = async () => {
-      const res = await instance( {
+      const response = await axios( {
         method: "post",
         url: `/payments/create?total=${getBasketTotal(basket) * 100}`
       } )
-      setClientSecret(res.data.clientSecret)
+      setClientSecret(response.data.clientSecret)
     }
     getClientSecret();
-  }, [ basket ] );
+	}, [ basket ] );
+	
+	console.log('The secret is HERE>>>>>', clientSecret);
 
   const handleSubmit = async ( event ) => {
     event.preventDefault();
@@ -42,16 +44,16 @@ export const Payment = () => {
         card: elements.getElement(CardElement)
       }
     } ).then( ( { paymentIntent } ) => {
-		db
-			.collection( 'users' )
-			.doc( user?.uid )
-			.collection( 'orders' )
-			.doc( paymentIntent.id )
-			.set( {
-				basket: basket,
-				amount: paymentIntent.amount,
-				created: paymentIntent.created
-			})
+		// db
+		// 	.collection( 'users' )
+		// 	.doc( user?.uid )
+		// 	.collection( 'orders' )
+		// 	.doc( paymentIntent.id )
+		// 	.set( {
+		// 		basket: basket,
+		// 		amount: paymentIntent.amount,
+		// 		created: paymentIntent.created
+		// 	})
       setSucceeded( true );
       setError( null );
 			setProcessing( false );
