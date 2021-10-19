@@ -7,15 +7,11 @@ import { useStateValue } from '../../contextAPI/StateProvider';
 import { auth } from '../../firebase';
 
 export const Header = () => {
-	const [ { basket, user }, dispatch ] = useStateValue();
+	const [ { basket, user }] = useStateValue();
 
 	const handleAuthentication = () => {
 		if ( user ) {
 			auth.signOut()
-			// dispatch( {
-			// 	type: 'SIGN_OUT',
-			// 	user: null
-			// })
 		}
 	}
   return (
