@@ -1,7 +1,7 @@
 /* eslint-disable no-empty-pattern */
 import { Star } from '@material-ui/icons';
 import React from 'react';
-import FlipMove from 'react-flip-move';
+// import FlipMove from 'react-flip-move';
 import { useStateValue } from '../../contextAPI/StateProvider';
 import './Checkout.css';
 
@@ -34,11 +34,9 @@ export const CheckoutProduct = ( { id, image, title, price, rating, hideButton }
 							</p>
 						))}
 				</div>
-				<FlipMove>
 				{!hideButton && (
 					<button onClick={removeFromBasket}>Remove from Basket</button>
 				)}
-				</FlipMove>
 			</div>
 		</div>
 	);

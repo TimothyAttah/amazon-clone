@@ -1,5 +1,5 @@
 import React from 'react';
-import FlipMove from 'react-flip-move';
+// import FlipMove from 'react-flip-move';
 import { Subtotal } from '../subtotal/Subtotal';
 import { images } from '../images';
 import './Checkout.css';
@@ -38,15 +38,6 @@ export const Checkout = () => {
 						rating={item.rating}
 					/>
 				))}
-				{/* <FlipMove
-					duration={500}
-					delay={10}
-					easing={'cubic-bezier(0.25, 0.5, 0.75, 1)'}
-					staggerDurationBy={30}
-					staggerDelayBy={10}
-					// onStart={startHandlerFunction}
-					// onFinish={finishHandlerFunction}
-				></FlipMove> */}
 			</div>
 			<div className='checkout__right'>
 				<Subtotal />
