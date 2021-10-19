@@ -50,9 +50,10 @@ export const Login = () => {
 		<div className='login'>
 			<Link to='/'>
 				{/* <img
-          src="https://upload.wikimedia.org/wikepedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png"
-          alt=""
-        /> */}
+					src='https://upload.wikimedia.org/wikepedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png'
+					alt=''
+					className='login__logo'
+				/> */}
 				<img src={images.Logo} alt='' className='login__logo' />
 			</Link>
 			<div className='login__container'>

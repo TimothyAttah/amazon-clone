@@ -6,14 +6,14 @@ import { CheckoutProduct } from '../checkout/CheckoutProduct';
 import './Payment.css';
 // import { db } from '../../firebase';
 
-// import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { getBasketTotal } from '../../contextAPI/reducer';
 import {instance} from '../../axios';
 
 export const Payment = () => {
   const history = useHistory();
-	// const stripe = useStripe();
-	// const elements = useElements();
+	const stripe = useStripe();
+	const elements = useElements();
 	const [{ basket, user }, dispatch] = useStateValue();
 
 	const [error, setError] = useState(null);
@@ -37,11 +37,11 @@ export const Payment = () => {
     event.preventDefault();
     setProcessing( true );
 
-    // const payload = await stripe.confirmCardPayment( clientSecret, {
-    //   payment_method: {
-    //     card: elements.getElement(CardElement)
-    //   }
-    // } ).then( ( { paymentIntent } ) => {
+    const payload = await stripe.confirmCardPayment( clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement)
+      }
+    } ).then( ( { paymentIntent } ) => {
 		// db
 		// 	.collection( 'users' )
 		// 	.doc( user?.uid )
@@ -52,15 +52,15 @@ export const Payment = () => {
 		// 		amount: paymentIntent.amount,
 		// 		created: paymentIntent.created
 		// 	})
-    //   setSucceeded( true );
-    //   setError( null );
-		// 	setProcessing( false );
+      setSucceeded( true );
+      setError( null );
+			setProcessing( false );
 			
-		// 	dispatch( {
-		// 		type: 'EMPTY_BASKET'
-		// 	})
-    //   history.replace('/orders');
-    // })
+			dispatch( {
+				type: 'EMPTY_BASKET'
+			})
+      history.replace('/orders');
+    })
   };
 	const handleChange = event => {
 		setDisabled(event.empty);
@@ -105,7 +105,7 @@ export const Payment = () => {
 					</div>
 					<div className='payment__details'>
 						<form onSubmit={handleSubmit}>
-							{/* <CardElement onChange={handleChange} />
+						 <CardElement onChange={handleChange} />
 							<div className='payment__priceContainer'>
 								<CurrencyFormat
 									renderText={value => (
@@ -121,7 +121,6 @@ export const Payment = () => {
                   <span>{ processing ? <p>Processing</p> : "Buy Now" }</span>
                 </button>
 							</div>
-							*/}
 							{error && <div>{error}</div>}
 						</form>
 					</div>
