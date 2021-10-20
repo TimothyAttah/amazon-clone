@@ -1,4 +1,5 @@
 import Logo from '../images/img-1.png';
+import Logo2 from '../images/img-0.jpg';
 import BackgroundImg from '../images/img-3.jpg';
 import BackgroundImg2 from '../images/img-13.jpg';
 import Item1 from '../images/img-2.jpg';
@@ -15,6 +16,7 @@ import Item11 from '../images/item-3.jpg';
 
 export const images = {
   Logo,
+  Logo2,
   BackgroundImg,
   BackgroundImg2,
   Item1,
