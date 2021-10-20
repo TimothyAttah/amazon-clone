@@ -10,11 +10,6 @@ export const getBasketTotal = ( basket ) =>
 const reducer = ( state, action ) => {
   console.log(action);
   switch ( action.type ) {
-    case "SIGN_IN":
-      return {
-        ...state,
-        user: [...state.user, action.item]
-      }
     case "SET_USER":
       return {
         ...state,
