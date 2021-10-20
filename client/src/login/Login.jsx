@@ -57,7 +57,7 @@ export const Login = () => {
 					alt=''
 					className='login__logo'
 				/> */}
-				<img src={images.Logo} alt='' className='login__logo' />
+				<img src={images.Logo2} alt='' className='login__logo' />
 			</Link>
 			<div className='login__container'>
 				<h1>Sign-in</h1>
