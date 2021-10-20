@@ -4,42 +4,38 @@ import { Checkout } from './components/checkout/Checkout';
 import { Header } from './components/header/Header';
 import { Home } from './home/Home';
 import { Login } from './login/Login';
-// import { auth } from './firebase';
+import { auth } from './firebase';
 import { useStateValue } from './contextAPI/StateProvider';
 import { Payment } from './components/payment/Payment';
 import { Orders } from './components/orders/Orders';
 
 
-/* --- DOWNLOAD THIS WHEN ONLINE START ----*/
-// import {loadStripe} from '@stripe/stripe-js'
-// import { Elements } from '@stripe/react-stripe-js'
+import {loadStripe} from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
 
-// const promise = loadStripe(
-// 	"pk_test_51hp" 
-// )// MAKE SURE YOU GET THE STRIPE PUBLIC KEY WHEN ONLINE
-
-/* --- DOWNLOAD THIS WHEN ONLINE END ----*/ 
-
-
+const promise = loadStripe(
+	'pk_test_51JmHqYKAh2TuRMk11ZFyPMn2IkkRMEHVAu7UVTh2f6TOYIKNAbhXow7byjQLi813EdDYXPtkQuJ2l3oej1J3xkgx00CiifpDQb'
+);
 
 
 export const App = () => {
 	const [{ user }, dispatch] = useStateValue();
-	useEffect(() => {
-		// auth.onAuthSateChanged( authUser => {
-		// 	console.log( authUser );
-		// 	if ( authUser ) {
-		// dispatch( {
-		// 	type: "SET_USER",
-		// 	user: authUser
-		// })
-		// 	}else{
-		//  dispatch( {
-		// 	type: "SET_USER",
-		// 	user: null
-		// })
-		// }
-		// })
+	useEffect( () => {
+		
+		auth.onAuthStateChanged( authUser => {
+			console.log('This is USER', authUser );
+			if ( authUser ) {
+		dispatch( {
+			type: "SET_USER",
+			user: authUser
+		})
+			}else{
+		 dispatch( {
+			type: "SET_USER",
+			user: null
+		})
+		}
+		})
 
 		if (user) {
 			console.log('this is user login >>>', user);
@@ -64,10 +60,9 @@ export const App = () => {
 					</Route>
 					<Route path='/payment'>
 						<Header />
-						{/* <Elements stripe={promise}>
+						<Elements stripe={promise}>
 							<Payment />
-						</Elements> USE THIS WITH STRIPE */}
-						<Payment />
+						</Elements>
 					</Route>
 					<Route path='/checkout'>
 						<Header />

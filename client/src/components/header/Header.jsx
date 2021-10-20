@@ -4,18 +4,18 @@ import {Search, ShoppingBasket} from '@material-ui/icons'
 import { images } from '../images';
 import './Header.css';
 import { useStateValue } from '../../contextAPI/StateProvider';
-// import { auth } from '../../firebase'; USE WHEN ONLINE
+import { auth } from '../../firebase';
 
 export const Header = () => {
 	const [ { basket, user }, dispatch ] = useStateValue();
 
 	const handleAuthentication = () => {
 		if ( user ) {
-			// auth.signOut() USE THIS WHEN ONLINE
-			dispatch( {
-				type: 'SIGN_OUT',
-				user: ''
-			})
+			auth.signOut()
+			// dispatch( {
+			// 	type: 'SIGN_OUT',
+			// 	user: null
+			// })
 		}
 	}
   return (
@@ -36,7 +36,7 @@ export const Header = () => {
 				<Link to={!user && '/login'}>
 					<div onClick={handleAuthentication} className='header__option'>
 						<span className='header__optionLineOne'>
-							Hello {user ? user[0]?.email : 'Guest'}
+							Hello {user ? user?.email : 'Guest'}
 						</span>
 						<span className='header__optionLineTwo'>
 							{user ? 'Sign Out' : 'Sign In'}

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { images } from '../components/images';
 import { useStateValue } from '../contextAPI/StateProvider';
-// import { auth } from '../firebase';
+import { auth } from '../firebase';
 import './Login.css';
 
 export const Login = () => {
@@ -13,11 +13,12 @@ export const Login = () => {
 	const [password, setPassword] = useState('');
 	const signIn = e => {
 		e.preventDefault();
-		// auth.createUserWithEmailAndPassword( email, password )
-		//   .then( ( auth ) => {
-		// history.push('/')
-		// })
-		// .catch(error => alert(error.message))
+		auth
+			.signInWithEmailAndPassword(email, password)
+			.then(auth => {
+				history.push('/');
+			})
+			.catch(error => alert(error.message));
 		dispatch({
 			type: 'SIGN_IN',
 			item: {
@@ -30,13 +31,15 @@ export const Login = () => {
 
 	const register = e => {
 		e.preventDefault();
-		// auth.createUserWithEmailAndPassword( email, password )
-		//   .then( ( auth ) => {
-		//   console.log(auth);
-		// if(auth){
-		//  history.push('/')
-		//   } )
-		// .catch(error => alert(error.message))
+		auth
+			.createUserWithEmailAndPassword(email, password)
+			.then( auth => {
+				if ( auth ) {
+					history.push( '/' );
+				}
+				console.log('auth>>>>>>>>', auth);
+			})
+			.catch(error => alert(error.message));
 		dispatch({
 			type: 'SIGN_IN',
 			item: {

@@ -1,4 +1,5 @@
 import React from 'react';
+import FlipMove from 'react-flip-move';
 import { Subtotal } from '../subtotal/Subtotal';
 import { images } from '../images';
 import './Checkout.css';
@@ -24,20 +25,28 @@ export const Checkout = () => {
 					className='checkout__ad'
 				/>
 				<div>
-					<h3>Hello, { user[0]?.email }</h3>
-					{/* <h3>{ user?.email }</h3> THIS IS THE REAL ONE WITH FIREBASE */}
+					<h3>Hello, {user?.email}</h3>
 					<h2 className='checkout__title'>Your shopping Basket</h2>
 				</div>
-				{ basket.map( item => (
+				{basket.map(item => (
 					<CheckoutProduct
-						key={ item.id }
-						id={ item.id }
-						title={ item.title }
-						image={ item.image }
-						price={ item.price }
-						rating={ item.rating }
+						key={item.id}
+						id={item.id}
+						title={item.title}
+						image={item.image}
+						price={item.price}
+						rating={item.rating}
 					/>
-				 ))}
+				))}
+				{/* <FlipMove
+					duration={500}
+					delay={10}
+					easing={'cubic-bezier(0.25, 0.5, 0.75, 1)'}
+					staggerDurationBy={30}
+					staggerDelayBy={10}
+					// onStart={startHandlerFunction}
+					// onFinish={finishHandlerFunction}
+				></FlipMove> */}
 			</div>
 			<div className='checkout__right'>
 				<Subtotal />
